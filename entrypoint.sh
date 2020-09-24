@@ -10,7 +10,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 semgrep --config="${INPUT_SEMGREP_CONFIG}" --json ${INPUT_SEMGREP_TARGET} \
   | jq '.results[] | "\(.path):\(.start.line) \(.extra.message)"' \
   | reviewdog \
-      -efm="%f:%l %m"
+      -efm="%f:%l %m" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
