@@ -10,6 +10,8 @@
 ![github-pr-review demo](https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png)
 ![github-pr-check demo](https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png)
 
+[reviewdog](https://github.com/reviewdog/reviewdog) action for [semgrep](https://github.com/returntocorp/semgrep) - lightweight static analysis for many languages with rules that look like source code.
+
 ## Usage
 
 ```yaml
