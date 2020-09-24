@@ -1,0 +1,25 @@
+rules:
+- id: odd-sequence-ifs
+  languages: [go]
+  message: Odd sequence of ifs
+  severity: ERROR
+  patterns:
+    - pattern-either:
+      - pattern: |
+          if $X { return ... }
+          if $X { ... }
+      - pattern: |
+          if ! $X { return ... }
+          if $X { ... }
+      - pattern: |
+          if $X { return ... }
+          if ! $X { ... }
+      - pattern: |
+          if $X == $Y { return ... }
+          if $X != $Y { ... }
+      - pattern: |
+          if $X != $Y { return ... }
+          if $X == $Y { ... }
+      - pattern: |
+          if $X { return  ... }
+          for $X { ... }
