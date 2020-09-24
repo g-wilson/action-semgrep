@@ -7,7 +7,7 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-semgrep --config="${INPUT_SEMGREP_CONFIG}" ${INPUT_SEMGREP_TARGET} --sarif . \
+semgrep --config="${INPUT_SEMGREP_CONFIG}" --sarif ${INPUT_SEMGREP_TARGET} \
   | reviewdog -f=sarif \
       -name="semgrep" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
