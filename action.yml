@@ -1,6 +1,7 @@
-name: 'TODO: Run <linter-name> with reviewdog'
-description: 'TODO: 🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: 'TODO: <your-name>'
+name: 'Run semgrep with reviewdog'
+description: '🐶 Run semgrep with reviewdog on pull requests to improve code review experience.'
+author: 'g-wilson'
+
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'
@@ -28,16 +29,19 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
+  ### Flags for semgrep ###
+  semgrep_config:
+    description: 'semgrep config (URL, path to file, or policy)'
     default: ''
+  semgrep_target:
+    description: 'semgrep target directory'
+    default: '.'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
-# TODO: update branding if you want.
 branding:
-  icon: 'check'
+  icon: 'eye'
   color: 'blue'
