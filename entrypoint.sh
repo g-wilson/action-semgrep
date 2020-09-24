@@ -2,13 +2,15 @@
 set -e
 
 if [ -n "${GITHUB_WORKSPACE}" ] ; then
-  cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
+  cd "${GITHUB_WORKSPACE}/." || exit
 fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-semgrep --config="${INPUT_SEMGREP_CONFIG}" --sarif ${INPUT_SEMGREP_TARGET} \
+semgrep --config="${INPUT_SEMGREP_CONFIG}" --json ${INPUT_SEMGREP_TARGET} \
+  | jq '.results[] | "\(.path):\(.start.line) \(.extra.message)"' \
   | reviewdog \
+      -efm="%f:%l %m"
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
