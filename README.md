@@ -26,7 +26,10 @@ jobs:
           github_token: ${{ secrets.github_token }}
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
           reporter: github-pr-review
-          # Change reporter level if you need.
-          # GitHub Status Check won't become failure with warning.
+          # Change reporter level if you need. GitHub Status Check won't become failure with warning.
           level: warning
+          # Change filter mode if you need [added,diff_context,file,nofilter].
+          filter_mode: file
+          # Semgrep config string (URL, path to file, or policy)
+          semgrep_config: p/gosec
 ```
