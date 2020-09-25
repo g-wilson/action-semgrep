@@ -8,7 +8,7 @@ fi
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 semgrep --config="${INPUT_SEMGREP_CONFIG}" --json ${INPUT_SEMGREP_TARGET} \
-  | jq -r '.results[] | "\(.extra.severity[0:1]):\(.path):\(.start.line) \(.extra.message)"' \
+  | jq -r '.results[] | "\(.extra.severity[0:1]):\(.path):\(.end.line) \(.extra.message)"' \
   | reviewdog \
       -efm="%t:%f:%l %m" \
       -name="${INPUT_TOOL_NAME}" \
