@@ -9,7 +9,7 @@ RUN apk --no-cache add build-base git python3 python3-dev py3-pip jq
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
-RUN python3 -m pip install semgrep
+RUN python3 -m pip install --ignore-installed semgrep
 
 COPY entrypoint.sh /entrypoint.sh
 
